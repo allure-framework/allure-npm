@@ -1,11 +1,16 @@
 {
   "name": "allure-cli",
   "bin": {
-      "allure": "bin/allure"
+    "allure": "bin/allure"
   },
   "version": "1.0.0",
   "description": "Wrapper to install Allure-commandline via NPM",
   "main": "index.js",
+  "files": [
+    "dist",
+    "bin",
+    "index.js"
+  ],
   "repository": "https://github.com/just-boris/allure-npm.git",
   "license": "ISC"
 }
