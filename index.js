@@ -18,9 +18,9 @@ var allureClasspath = path.join(allureHome, 'lib', '*') + ':' + path.join(allure
 var command = "${JAVA} ${JAVA_ARGS} -cp \"${ALLURE_CP}\" ${ALLURE_ARGS} ${ALLURE_MAIN} $@"
 
 spawn(javaPath, [
-    '-cp "'+ allureClasspath +'"',
-    'ru.yandex.qatools.allure.CommandLine',
-    '-Dallure.home='+allureHome
-].concat(process.argv.slice(1)), {
+    '-cp', allureClasspath,
+    '-Dallure.home=' + allureHome,
+    'ru.yandex.qatools.allure.CommandLine'
+].concat(process.argv.slice(2)), {
     stdio: 'inherit'
 });
