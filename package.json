@@ -11,6 +11,6 @@
     "bin",
     "index.js"
   ],
-  "repository": "https://github.com/just-boris/allure-npm.git",
+  "repository": "https://github.com/allure-framework/allure-npm.git",
   "license": "ISC"
 }
