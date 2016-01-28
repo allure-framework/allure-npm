@@ -16,3 +16,10 @@ allure <command> [<args>]
 ```
 Run `alure help` for list of supported commands
 
+# Development
+
+Allure package should be downloaded from external storage. Repository content doesn't have actual code. 
+
+1. Download Allure-commandline package: `./fetch-sources <version>`
+2. Pubslish result to NPM: `npm publish`
+
