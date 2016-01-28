@@ -1,3 +1,10 @@
 #!/usr/bin/env node
-
-require('../')
+var path = require('path');
+require('child_process')
+    .spawn(path.join(__dirname, '../dist/bin/allure'), process.argv.slice(2), {
+        env: process.env,
+        stdio: 'inherit'
+    })
+    .on('close', function(code) {
+        process.exit(code);
+    });

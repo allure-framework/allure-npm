@@ -1,5 +1,5 @@
 {
-  "name": "allure-cli",
+  "name": "allure-commandline",
   "bin": {
     "allure": "bin/allure"
   },
