@@ -1,5 +1,7 @@
 # Allure Commandline
 
+[![npm version](https://img.shields.io/npm/v/allure-commandline.svg?style=flat-square)](https://www.npmjs.com/package/allure-commandline)
+
 > NPM wrapper around allure-commandline
 
 [Allure Commandline](http://wiki.qatools.ru/display/AL/Allure+Commandline) is a tool to generate Allure report from test results. Now you can get it installed directly from NPM.
