@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 var path = require('path');
+var isWindows = path.sep === '\\';
+var allureCommand = 'allure' + (isWindows ? '.bat' : '');
 require('child_process')
-    .spawn(path.join(__dirname, '../dist/bin/allure'), process.argv.slice(2), {
+    .spawn(path.join(__dirname, '../dist/bin', allureCommand), process.argv.slice(2), {
         env: process.env,
         stdio: 'inherit'
     })
