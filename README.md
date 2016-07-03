@@ -16,7 +16,7 @@
 ```
 allure <command> [<args>]
 ```
-Run `alure help` for list of supported commands
+Run `allure help` for list of supported commands
 
 # Development
 
