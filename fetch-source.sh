@@ -7,4 +7,5 @@ if [[ -f allure-commandline.zip ]]; then
 fi
 wget https://github.com/allure-framework/allure1/releases/download/allure-core-$1/allure-commandline.zip
 unzip allure-commandline.zip -d dist
+npm test
 npm version $1
