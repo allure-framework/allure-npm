@@ -1,10 +1,12 @@
 #!/bin/bash
-if [[ -d dist ]]; then
-    rm -Rf dist
+version=$1
+
+rm -Rf dist
+mkdir dist
+
+if [[ -f allure-commandline.tgz ]]; then
+    rm allure-commandline.tgz
 fi
-if [[ -f allure-commandline.zip ]]; then
-    rm allure-commandline.zip
-fi
-wget https://github.com/allure-framework/allure1/releases/download/allure-core-$1/allure-commandline.zip
-unzip allure-commandline.zip -d dist
-npm version $1
+wget  --output-document allure-commandline.tgz https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/$version/allure-$version.tgz
+tar -xf allure-commandline.tgz --strip-components=1 --directory dist
+npm test
