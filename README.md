@@ -8,7 +8,7 @@
 
 ## Install
 
-1. Allure requires Java 7 or higher
+1. Allure requires [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) or higher
 2. `npm install -g allure-commandline --save-dev`
 
 ## Usage
@@ -38,5 +38,6 @@ generation.on('exit', function(exitCode) {
 Allure package should be downloaded from external storage. Repository content doesn't have actual code.
 
 1. Download Allure-commandline package: `./fetch-sources <version>`
-2. Pubslish result to NPM: `npm publish`
+2. Update package version `npm version 2.0.0-BETAX` (because NPM require triple numbers in version, like 0.0.0)
+3. Pubslish result to NPM: `npm publish --tag beta` (while Allure2 is not stable)
 
