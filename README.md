@@ -4,7 +4,7 @@
 
 > NPM wrapper around allure-commandline
 
-[Allure Commandline](http://wiki.qatools.ru/display/AL/Allure+Commandline) is a tool to generate Allure report from test results. Now you can get it installed directly from NPM.
+[Allure Commandline](https://docs.qameta.io/allure/2.0/#_commandline) is a tool to generate Allure report from test results. Now you can get it installed directly from NPM.
 
 ## Install
 
