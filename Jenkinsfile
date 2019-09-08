@@ -17,7 +17,7 @@ pipeline {
                         sh 'git checkout master && git pull origin master'
                         sh 'npm install -g npm-cli-login'
                         sh 'npm-cli-login -e ci@qameta.io'
-                        sh ./fetch-sources.sh ${RELEASE_VERSION}
+                        sh 'sh ./fetch-sources.sh ${RELEASE_VERSION}'
                         sh 'npm version ${RELEASE_VERSION}'
                         sh 'npm publish'
                     }
