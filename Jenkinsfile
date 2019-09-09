@@ -31,6 +31,8 @@ pipeline {
                         sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-source.sh'
                         sh 'npm test'
                         sh 'npm publish'
+                        sh 'git tag ${RELEASE_VERSION}'
+                        sh 'git push --tags'
                     }
                 }
             }
