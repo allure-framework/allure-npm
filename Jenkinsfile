@@ -8,6 +8,16 @@ pipeline {
         string(name: 'RELEASE_VERSION', defaultValue: '', description: 'Release version')
     }
     stages {
+        stage('Download dist') {
+            steps {
+                sh 'cdr=$(pwd); $cdr/fetch-sources.sh ${RELEASE_VERSION}'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
         stage('Release') {
             when { expression { return params.RELEASE } }
             steps {
@@ -17,7 +27,6 @@ pipeline {
                         sh 'git checkout master && git pull origin master'
                         sh 'npm install -g npm-cli-login'
                         sh 'npm-cli-login -e ci@qameta.io'
-                        sh 'cdr=$(pwd); $cdr/fetch-sources.sh ${RELEASE_VERSION}'
                         sh 'npm version ${RELEASE_VERSION}'
                         sh 'npm publish'
                     }
