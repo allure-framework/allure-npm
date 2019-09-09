@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Download dist') {
             steps {
-                sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-source.sh ${RELEASE_VERSION}'
+                sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-source.sh'
             }
         }
         stage('Test') {
@@ -28,6 +28,8 @@ pipeline {
                         sh 'npm install -g npm-cli-login'
                         sh 'npm-cli-login -e ci@qameta.io'
                         sh 'npm version ${RELEASE_VERSION}'
+                        sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-source.sh'
+                        sh 'npm test'
                         sh 'npm publish'
                     }
                 }
