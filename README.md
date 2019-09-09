@@ -37,7 +37,7 @@ generation.on('exit', function(exitCode) {
 
 Allure package should be downloaded from external storage. Repository content doesn't have actual code.
 
-1. Download Allure-commandline package: `./fetch-sources <version>`
-2. Update package version `npm version 2.0.0-BETAX` (because NPM require triple numbers in version, like 0.0.0)
-3. Pubslish result to NPM: `npm publish --tag beta` (while Allure2 is not stable)
+2. Update package version `$ npm version 2.13.0`
+1. Download Allure-commandline package: `./fetch-sources`
+3. Pubslish result to NPM: `npm publish`
 
