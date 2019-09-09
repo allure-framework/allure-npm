@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Download dist') {
             steps {
-                sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-sources.sh ${RELEASE_VERSION}'
+                sh 'cdr=$(pwd); ls -l $cdr; $cdr/fetch-source.sh ${RELEASE_VERSION}'
             }
         }
         stage('Test') {
