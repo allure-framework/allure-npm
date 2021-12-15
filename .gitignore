@@ -1,2 +1,4 @@
 dist
 allure-commandline.tgz
+node_modules
+.idea
