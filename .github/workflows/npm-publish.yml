@@ -18,6 +18,6 @@ jobs:
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: ./fetch-source.sh
       - run: npm run test
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
