@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 14
 
-      - name: "Yarn install"
+      - name: "Npm install"
         run: |
           npm install
 
