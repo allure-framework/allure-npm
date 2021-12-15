@@ -15,11 +15,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-      - run: npm ci
-      - run: npm run version -- ${{ steps.get_version.outputs.VERSION }}
       - run: ./fetch-source
 
   publish-npm:
