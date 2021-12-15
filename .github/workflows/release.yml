@@ -28,13 +28,9 @@ jobs:
         with:
           node-version: 14
 
-      - name: "Npm install"
-        run: |
-          npm install
-
       - name: "Set release version"
         run: |
-          npm run replace-in-file --isRegex=true '/"version":\s*".+"/g' '"version": "${{ github.event.inputs.releaseVersion }}"' 'package.json'
+          npx replace-in-file --isRegex=true '/"version":\s*".+"/g' '"version": "${{ github.event.inputs.releaseVersion }}"' 'package.json'
 
       - name: "Commit release version and create tag"
         run: |

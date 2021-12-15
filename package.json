@@ -16,7 +16,5 @@
   },
   "repository": "https://github.com/allure-framework/allure-npm.git",
   "license": "Apache-2.0",
-  "devDependencies": {
-    "replace-in-file": "^6.3.2"
-  }
+  "devDependencies": {}
 }
