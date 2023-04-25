@@ -1,6 +1,6 @@
 # Allure Commandline
 
-[![npm version](https://img.shields.io/npm/v/allure-commandline.svg?style=flat-square)](https://www.npmjs.com/package/allure-commandline)
+![downloads](https://img.shields.io/npm/dm/allure-commandline.svg?style=flat-square) [![npm version](https://img.shields.io/npm/v/allure-commandline.svg?style=flat-square)](https://www.npmjs.com/package/allure-commandline)
 
 > NPM wrapper for allure-commandline
 
