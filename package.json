@@ -3,7 +3,7 @@
   "bin": {
     "allure": "bin/allure"
   },
-  "version": "2.22.3",
+  "version": "2.22.4",
   "description": "Wrapper to install Allure-commandline via NPM",
   "main": "index.js",
   "files": [
