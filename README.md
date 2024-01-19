@@ -1,14 +1,21 @@
-# Allure Commandline
+# Allure Commandline 
 
 ![downloads](https://img.shields.io/npm/dm/allure-commandline.svg?style=flat-square) [![npm version](https://img.shields.io/npm/v/allure-commandline.svg?style=flat-square)](https://www.npmjs.com/package/allure-commandline)
 
-> NPM wrapper for allure-commandline
+> NPM wrapper for Allure Commandline
 
-[Allure Commandline](https://docs.qameta.io/allure/2.0/#_commandline) is a tool to generate Allure report from test results. Now you can get it installed directly from NPM.
+<img src="https://allurereport.org/public/img/allure-report.svg" height="85px" alt="Allure Report logo" align="right" />
+
+- Learn more about Allure Report at [https://allurereport.org](https://allurereport.org)
+- 📚 [Documentation](https://allurereport.org/docs/) – discover official documentation for Allure Report
+- ❓ [Questions and Support](https://github.com/orgs/allure-framework/discussions/categories/questions-support) – get help from the team and community
+- 📢 [Official announcements](https://github.com/orgs/allure-framework/discussions/categories/announcements) –  stay updated with our latest news and updates
+- 💬 [General Discussion](https://github.com/orgs/allure-framework/discussions/categories/general-discussion) – engage in casual conversations, share insights and ideas with the community
+- 🖥️ [Live Demo](https://demo.allurereport.org/) — explore a live example of Allure Report in action
 
 ## Install
 
-1. Allure requires [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) or higher
+1. Allure requires [Java 8](https://bell-sw.com/pages/downloads/#jdk-17-lts) or higher
 2. `npm install -g allure-commandline --save-dev`
 
 ## Usage
@@ -16,7 +23,7 @@
 ```
 allure <command> [<args>]
 ```
-Run `allure help` for list of supported commands
+Run `allure help` for a list of supported commands.
 
 ## Node.js API
 
@@ -35,9 +42,9 @@ generation.on('exit', function(exitCode) {
 
 # Development
 
-Allure package should be downloaded from external storage. Repository content doesn't have actual code.
+Allure packages should be downloaded from external storage. Repository content doesn't have actual code.
 
 1. Update package version `$ npm version 2.13.0`
-1. Download Allure-commandline package: `./fetch-source`
-1. Pubslish result to NPM: `npm publish`
+1. Download the Allure-commandline package: `./fetch-source`
+1. Publish result to NPM: `npm publish`
 
