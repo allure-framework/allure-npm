@@ -12,7 +12,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "./bin/allure --version"
+    "test": "node ./bin/allure --version"
   },
   "repository": "https://github.com/allure-framework/allure-npm.git",
   "license": "Apache-2.0",
