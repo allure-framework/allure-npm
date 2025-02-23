@@ -1,5 +1,6 @@
 dist
 allure-commandline.tgz
+allure-report
 
 #IDEA Files
 .idea/*
