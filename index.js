@@ -1,12 +1,12 @@
-#!/usr/bin/env node
 var path = require('path');
-var isWindows = path.sep === '\\';
-var allureCommand = 'allure' + (isWindows ? '.bat' : '');
 
+/**
+ *
+ * @param {string[]} args
+ */
 module.exports = function(args) {
-    return require('child_process').spawn(path.join(__dirname, 'dist/bin', allureCommand), args, {
+    return require('batspawn').spawn(path.join(__dirname, 'dist/bin', 'allure'), '.bat', args, {
         env: process.env,
         stdio: 'inherit',
-        shell: true,
     });
 }

@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [ 18, 20, 21 ]
+        node-version: [ 18, 20, 22 ]
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
@@ -31,5 +31,4 @@ jobs:
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: powershell -ExecutionPolicy Bypass -File fetch-source.ps1
         if: runner.os == 'Windows'
-      - run: npm link
-      - run: allure --version
+      - run: npm test
