@@ -12,9 +12,11 @@
     "index.js"
   ],
   "scripts": {
-    "test": "node ./bin/allure --version"
+    "test": "node ./bin/allure generate -c --single-file --name \"Web & Mobile\""
   },
   "repository": "https://github.com/allure-framework/allure-npm.git",
   "license": "Apache-2.0",
-  "devDependencies": {}
+  "dependencies": {
+    "batspawn": "^1.0.1"
+  }
 }
