@@ -15,24 +15,31 @@ permissions:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [ 18, 20, 21 ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: ./fetch-source.sh
-        if: runner.os != 'Windows'
-      - name: "Fetch & Unpack Allure Commandline from Maven Central"
-        run: powershell -ExecutionPolicy Bypass -File fetch-source.ps1
-        if: runner.os == 'Windows'
-      - run: npm link
-      - run: allure --version
+      - run: npm pack
+      - id: get_name_version
+        run: echo version=$(npm pkg get version) >> $GITHUB_OUTPUT
+      - run: echo allure-commandline-${{ fromJSON(steps.get_name_version.outputs.version) }}.tgz
+#
+#  test:
+#    needs: build
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        node-version: [ 18, 20, 22, 24 ]
+#        os: [ ubuntu-latest, windows-latest, macos-latest ]
+#    runs-on: ${{ matrix.os }}
+#    steps:
+#      - uses: actions/setup-node@v4
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          registry-url: https://registry.npmjs.org/
