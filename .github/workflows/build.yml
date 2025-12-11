@@ -68,6 +68,7 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: test-data
+      - run: ls -R
       - name: Print bundled allure-commandline version
         run: npx --yes package.tgz --version
       - name: Generate Allure Report
