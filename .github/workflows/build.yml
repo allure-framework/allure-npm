@@ -15,24 +15,63 @@ permissions:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [ 18, 20, 21 ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: ./fetch-source.sh
-        if: runner.os != 'Windows'
-      - name: "Fetch & Unpack Allure Commandline from Maven Central"
-        run: powershell -ExecutionPolicy Bypass -File fetch-source.ps1
-        if: runner.os == 'Windows'
-      - run: npm link
-      - run: allure --version
+      - run: npm pack
+      - id: get_version
+        run: echo version=$(npm pkg get version) >> $GITHUB_OUTPUT
+      - run: mv allure-commandline-${{ fromJSON(steps.get_version.outputs.version) }}.tgz package.tgz
+      - name: Upload allure-commandline artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: allure-commandline
+          path: package.tgz
+      - name: Upload test data
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-data
+          path: test-data
+
+
+  test:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 18, 20, 22, 24 ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        results: [ 'directory with space', simple ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'zulu'
+          java-package: 'jre'
+          java-version: 8
+      - name: Download allure-commandline artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: allure-commandline
+      - name: Download test-data artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: test-data
+      - name: Print bundled allure-commandline version
+        run: npx --yes package.tgz --version
+      - name: Generate Allure Report
+        run: npx --yes package.tgz generate "${{ matrix.results }}"
+      - name: Fail the job if the report has no results
+        if: ${{ hashFiles('allure-report/data/test-cases/') == '' }}
+        run: exit 1
