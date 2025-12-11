@@ -17,8 +17,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
@@ -26,20 +26,48 @@ jobs:
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: ./fetch-source.sh
       - run: npm pack
-      - id: get_name_version
+      - id: get_version
         run: echo version=$(npm pkg get version) >> $GITHUB_OUTPUT
-      - run: echo allure-commandline-${{ fromJSON(steps.get_name_version.outputs.version) }}.tgz
-#
-#  test:
-#    needs: build
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        node-version: [ 18, 20, 22, 24 ]
-#        os: [ ubuntu-latest, windows-latest, macos-latest ]
-#    runs-on: ${{ matrix.os }}
-#    steps:
-#      - uses: actions/setup-node@v4
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#          registry-url: https://registry.npmjs.org/
+      - run: mv allure-commandline-${{ fromJSON(steps.get_version.outputs.version) }}.tgz package.tgz
+      - name: Upload allure-commandline artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: allure-commandline
+          path: package.tgz
+      - name: Upload test data
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-data
+          path: test-data
+
+
+  test:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 18, 20, 22, 24 ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        results: [ 'directory with space', simple ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'zulu'
+          java-package: 'jre'
+          java-version: 8
+      - name: Download allure-commandline artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: allure-commandline
+      - name: Download test-data artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: test-data
+      - run: npx --yes package.tgz --version
+      - run: npx --yes package.tgz generate test-data/${{ matrix.results }}
+

@@ -1,0 +1,46 @@
+{
+  "uuid": "0a4e08bb-194c-45be-82fb-985ea654f202",
+  "name": "ssimple test",
+  "historyId": "__7e359adbba67eeb93ce9322100913ab2:__",
+  "status": "passed",
+  "statusDetails": {},
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "module",
+      "value": "core"
+    },
+    {
+      "name": "framework",
+      "value": "vitest"
+    },
+    {
+      "name": "language",
+      "value": "javascript"
+    },
+    {
+      "name": "parentSuite",
+      "value": "attachments"
+    },
+    {
+      "name": "host",
+      "value": "agent-1"
+    },
+    {
+      "name": "thread",
+      "value": "vitest-worker-1"
+    },
+    {
+      "name": "package",
+      "value": "test.store.store.test.ts"
+    }
+  ],
+  "links": [],
+  "start": 1736958120045,
+  "fullName": "test/simple.test.ts#simple test",
+  "testCaseId": "__7e359adbba67eeb93ce9322100913ab2",
+  "stop": 1736958120045
+}
