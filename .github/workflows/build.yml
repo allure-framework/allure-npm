@@ -68,6 +68,10 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: test-data
-      - run: npx --yes package.tgz --version
-      - run: npx --yes package.tgz generate test-data/${{ matrix.results }}
-
+      - name: Print bundled allure-commandline version
+        run: npx --yes package.tgz --version
+      - name: Generate Allure Report
+        run: npx --yes package.tgz generate test-data/${{ matrix.results }}
+      - name: Fail the job if the report has no results
+        if: ${{ hashFiles('allure-report/data/test-cases/') == '' }}
+        run: exit 1
