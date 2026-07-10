@@ -1,0 +1,18 @@
+name: Task
+description: Track maintenance or internal work
+type: task
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Describe the task and why it is needed.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      description: What needs to be true for this task to be complete?
+    validations:
+      required: true
