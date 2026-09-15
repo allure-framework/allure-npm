@@ -39,7 +39,7 @@ jobs:
           git config --global user.name "${GIT_COMMIT_AUTHOR_NAME}"
           git config --global user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 20
 
