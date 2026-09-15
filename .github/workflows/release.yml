@@ -59,7 +59,7 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/${{ github.repository }}/releases
-          tag_name: ${{ github.event.inputs.releaseVersion }}
+          tag_name: v${{ github.event.inputs.releaseVersion }}
           generate_release_notes: true
           target_commitish: ${{ github.ref }}
         env:

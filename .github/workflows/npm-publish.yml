@@ -15,11 +15,9 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          check-latest: true
           registry-url: https://registry.npmjs.org/
-      # Ensure npm 11.5.1 or later is installed
-      - name: Update npm
-        run: npm install -g npm@latest
       - run: npm ci
       - name: "Fetch & Unpack Allure Commandline from Maven Central"
         run: ./fetch-source.sh
