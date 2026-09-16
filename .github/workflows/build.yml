@@ -61,11 +61,11 @@ jobs:
           java-package: 'jre'
           java-version: 8
       - name: Download allure-commandline artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: allure-commandline
       - name: Download test-data artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: test-data
       - name: Print bundled allure-commandline version
