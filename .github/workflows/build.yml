@@ -30,12 +30,12 @@ jobs:
         run: echo version=$(npm pkg get version) >> $GITHUB_OUTPUT
       - run: mv allure-commandline-${{ fromJSON(steps.get_version.outputs.version) }}.tgz package.tgz
       - name: Upload allure-commandline artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: allure-commandline
           path: package.tgz
       - name: Upload test data
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: test-data
           path: test-data
